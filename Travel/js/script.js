@@ -1,3 +1,7 @@
+// ===============================
+// MOBILE MENU
+// ===============================
+
 const menuToggle = document.getElementById("menu-toggle");
 const navLinks = document.getElementById("nav-links");
 
@@ -5,7 +9,10 @@ menuToggle.addEventListener("click", function () {
     navLinks.classList.toggle("active");
 });
 
-// Search Function
+
+// ===============================
+// SEARCH DESTINATIONS
+// ===============================
 
 const searchInput = document.getElementById("search");
 const cards = document.querySelectorAll(".card");
@@ -14,24 +21,28 @@ searchInput.addEventListener("keyup", function () {
 
     const searchValue = searchInput.value.toLowerCase();
 
-    cards.forEach(function(card){
+    cards.forEach(function (card) {
 
         const place = card.getAttribute("data-name");
 
-        if(place.includes(searchValue)){
+        if (place.includes(searchValue)) {
             card.style.display = "block";
-        }else{
+        } else {
             card.style.display = "none";
         }
 
     });
 
 });
-// Contact Form Validation
+
+
+// ===============================
+// CONTACT FORM VALIDATION
+// ===============================
 
 const form = document.getElementById("contact-form");
 
-form.addEventListener("submit", function(event){
+form.addEventListener("submit", function (event) {
 
     event.preventDefault();
 
@@ -40,43 +51,82 @@ form.addEventListener("submit", function(event){
     const phone = document.getElementById("phone").value;
     const destination = document.getElementById("destination").value;
 
-    if(name === "" || email === "" || phone === "" || destination === ""){
+    if (
+        name === "" ||
+        email === "" ||
+        phone === "" ||
+        destination === ""
+    ) {
+
         alert("Please fill all the required fields.");
-    }
-    else{
+
+    } else {
+
         alert("Your booking request has been submitted successfully!");
+
         form.reset();
     }
 
 });
-function showDetails(place){
+
+
+// ===============================
+// DESTINATION DETAILS POPUP
+// ===============================
+
+function showDetails(place) {
 
     const title = document.getElementById("popup-title");
     const text = document.getElementById("popup-text");
     const popup = document.getElementById("popup");
 
-    if(place === "Goa"){
+    if (place === "Goa") {
+
         title.innerHTML = "Goa";
-        text.innerHTML = "Beautiful beaches, water sports, nightlife and seafood. Best time: November to February.";
+
+        text.innerHTML =
+            "Beautiful beaches, water sports, nightlife and seafood. Best time: November to February.";
+
     }
 
-    else if(place === "Ooty"){
+    else if (place === "Ooty") {
+
         title.innerHTML = "Ooty";
-        text.innerHTML = "Tea gardens, cool climate, toy train and beautiful hills. Best time: October to June.";
+
+        text.innerHTML =
+            "Tea gardens, cool climate, toy train and beautiful hills. Best time: October to June.";
+
     }
 
-    else{
+    else if (place === "Kerala") {
+
         title.innerHTML = "Kerala";
-        text.innerHTML = "Backwaters, houseboats, hill stations and traditional culture. Best time: September to March.";
+
+        text.innerHTML =
+            "Backwaters, houseboats, hill stations and traditional culture. Best time: September to March.";
+
     }
 
     popup.style.display = "block";
 }
 
-function closePopup(){
+
+// ===============================
+// CLOSE POPUP
+// ===============================
+
+function closePopup() {
+
     document.getElementById("popup").style.display = "none";
+
 }
-function bookPackage(place){
+
+
+// ===============================
+// BOOK PACKAGE
+// ===============================
+
+function bookPackage(place) {
 
     document.getElementById("destination").value = place;
 
@@ -85,38 +135,59 @@ function bookPackage(place){
     });
 
 }
+
+
+// ===============================
+// BACK TO TOP BUTTON
+// ===============================
+
 const topBtn = document.getElementById("topBtn");
 
-window.onscroll = function(){
+window.onscroll = function () {
 
-    if(document.documentElement.scrollTop > 300){
+    if (document.documentElement.scrollTop > 300) {
+
         topBtn.style.display = "block";
-    }else{
+
+    } else {
+
         topBtn.style.display = "none";
+
     }
 
-}
+};
 
-function scrollToTop(){
+
+function scrollToTop() {
 
     window.scrollTo({
-        top:0,
-        behavior:"smooth"
+        top: 0,
+        behavior: "smooth"
     });
 
 }
+
+
+// ===============================
+// FAQ
+// ===============================
+
 const questions = document.querySelectorAll(".faq-question");
 
-questions.forEach(function(question){
+questions.forEach(function (question) {
 
-    question.addEventListener("click", function(){
+    question.addEventListener("click", function () {
 
         const answer = this.nextElementSibling;
 
-        if(answer.style.display === "block"){
+        if (answer.style.display === "block") {
+
             answer.style.display = "none";
-        }else{
+
+        } else {
+
             answer.style.display = "block";
+
         }
 
     });
